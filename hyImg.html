@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no' />
+
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<script src="jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+	<title></title>
+	 <style>
+	        html{
+	            font-size: 12px;
+	        }
+	        *{
+	            margin: 0;
+	            padding: 0;
+	        }
+	    </style>
+</head>
+<body>
+	<div class="wrap">
+	        <div id='forcenter'></div>
+	    </div>
+	    <script src="./waterfall.js"></script>
+	<script>
+			 let mwf = new WaterFall({
+			            id: 'forcenter',
+			            imgUrls: Array.from({length:10}).reduce((x,y,z)=>{
+							
+							x.push(`./images/13 (${z+1}).JPG`)
+							return x;
+						},[])
+			        });
+			
+			        window.onload = ()=>{
+			            mwf.WFRender();
+			        }
+			
+			        window.onresize = ()=>{
+			            mwf.resizeWF();
+			        }
+			
+	    </script>
+</body>
+</html>
