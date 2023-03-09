@@ -39,7 +39,7 @@ WaterFall.prototype = {
         height: auto;
         padding:5px;
         box-sizing: border-box;  /* 非常重要，可将不必要的计算略去 */
-		opacity:0;
+// 		opacity:0;
       }
       div.item img{
         width: 100%;
@@ -124,5 +124,5 @@ function setDiv(item, left, top) {
 	item.style.left = left + 'px';
 	item.style.top = top + 'px';
 	item.style.animationName = 'none';
-	item.style.opacity = '1';
+// 	item.style.opacity = '1';
 }
