@@ -101,5 +101,5 @@ function getMinH(arr) {
 function setDiv(item, left, top) {
 	item.style.left = left + 'px';
 	item.style.top = top + 'px';
-	item.style.opacity = '.05';
+	item.style.opacity = '1';
 }
