@@ -6,6 +6,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 			<script src="jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="animate.css">
 	<title></title>
 	 <style>
 	        html{
@@ -21,11 +22,14 @@
 	<div class="wrap">
 	        <div id='forcenter'></div>
 	    </div>
+		<script type="text/javascript" src="wow.min.js"></script>
 	    <script src="./waterfall.js"></script>
+		
 	<script>
+	new WOW().init();
 			 let mwf = new WaterFall({
 			            id: 'forcenter',
-			            imgUrls: Array.from({length:10}).reduce((x,y,z)=>{
+			            imgUrls: Array.from({length:20}).reduce((x,y,z)=>{
 							
 							x.push(`./images/13 (${z+1}).JPG`)
 							return x;
