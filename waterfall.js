@@ -10,7 +10,6 @@ function WaterFall(obj) {
 WaterFall.prototype = {
 	WFRender: function() {
 		let flag = 0; // 标志位，用于检测每一张图片都加载完毕
-	
 		this.imgUrls.map((item, i) => {
 			let div = document.createElement('div');
 			div.className = 'item wow';
