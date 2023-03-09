@@ -18,11 +18,12 @@ WaterFall.prototype = {
 			img.src = item;
 			img.onload = () => {
 				flag++;
+				
 				div.appendChild(img);
 				this.container.appendChild(div);
-
 				// 全部图片加载完毕后再开始布局，否则获取不到元素的最终高度。
 				if (flag === this.imgUrls.length) {
+					
 					this.resizeWF();
 				}
 			}
@@ -101,5 +102,5 @@ function getMinH(arr) {
 function setDiv(item, left, top) {
 	item.style.left = left + 'px';
 	item.style.top = top + 'px';
-	item.style.opacity = '1';
+	item.style.opacity = '.05';
 }
