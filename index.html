@@ -1,50 +1,90 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
 	<meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no' />
+	<meta name='viewport' content='width=device-width,initial-scale=1.0,user-scalable=no' />
 
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-			<script src="jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
-			<link rel="stylesheet" type="text/css" href="animate.css">	
+	<script src="jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="animate.css">
 	<title></title>
-	 <style>
-	        html{
-	            font-size: 12px;
-	        }
-	        *{
-	            margin: 0;
-	            padding: 0;
-	        }
-	    </style>
-</head>
-<body>
-	<div class="wrap">
-	        <div id='forcenter'></div>
-	    </div>
-		<script type="text/javascript" src="wow.min.js"></script>
+	<style>
+		html {
+			font-size: 12px;
+		}
 
-	    <script src="./waterfall.js"></script>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.plane-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: skyBlue;
+  display: inline-block;
+  animation: plane-loader 1.2s infinite ease-in-out;
+}
+@keyframes plane-loader {
+  0% {
+    transform: perspective(120px);
+  }
+  50% {
+    transform: perspective(120px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(120px) rotateY(180deg) rotateX(180deg);
+  }
+}
+.loadingIcon {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 99;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+}
+	</style>
+</head>
+
+<body>
+	<div class="loadingIcon">
+		<div class="plane-wrapper">
+
+		</div>
+	</div>
+	
+	<div class="wrap">
+		<div id='forcenter'></div>
+	</div>
+	<script type="text/javascript" src="wow.min.js"></script>
+
+	<script src="./waterfall.js"></script>
 	<script>
 
-			 let mwf = new WaterFall({
-			            id: 'forcenter',
-			            imgUrls: Array.from({length:100}).reduce((x,y,z)=>{
-							
-							x.push(`./images/1_ (${z+1}).jpg`)
-							return x;
-						},[])
-			        });
-			
-			        window.onload = ()=>{
-			            mwf.WFRender();
-						
-			        }
-			
-			        window.onresize = ()=>{
-			            mwf.resizeWF();
-			        }
-			
-	    </script>
+		let mwf = new WaterFall({
+			id: 'forcenter',
+			imgUrls: Array.from({ length: 100 }).reduce((x, y, z) => {
+
+				x.push(`./images/1_ (${z + 1}).jpg`)
+				return x;
+			}, [])
+		});
+
+		window.onload = () => {
+			mwf.WFRender();
+
+		}
+
+		window.onresize = () => {
+			mwf.resizeWF();
+		}
+
+	</script>
 </body>
+
 </html>
