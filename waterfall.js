@@ -37,6 +37,7 @@ WaterFall.prototype = {
         width : 200px;
         height: auto;
         padding:5px;
+			opacity:0;
 		
         box-sizing: border-box;  /* 非常重要，可将不必要的计算略去 */
       }
@@ -70,6 +71,7 @@ WaterFall.prototype = {
 				setDiv(items[i], pos.left, pos.top); // 放置div
 			}
 		}
+		
 	}
 }
 
@@ -99,4 +101,5 @@ function getMinH(arr) {
 function setDiv(item, left, top) {
 	item.style.left = left + 'px';
 	item.style.top = top + 'px';
+	item.style.opacity = '.05';
 }
