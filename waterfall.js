@@ -13,21 +13,21 @@ WaterFall.prototype = {
 	
 		this.imgUrls.map((item, i) => {
 			let div = document.createElement('div');
-			div.className = 'item wow bounceInDown';
+			div.className = 'item wow';
 			let img = new Image();
 			img.src = item;
 			img.onload = () => {
 				flag++;
-				
 				div.appendChild(img);
 				this.container.appendChild(div);
 				// 全部图片加载完毕后再开始布局，否则获取不到元素的最终高度。
 				if (flag === this.imgUrls.length) {
-					
 					this.resizeWF();
 				}
 			}
 		});
+		
+		
 		
 
 
@@ -38,14 +38,13 @@ WaterFall.prototype = {
         width : 200px;
         height: auto;
         padding:5px;
-			opacity:0;
-		
         box-sizing: border-box;  /* 非常重要，可将不必要的计算略去 */
+			opacity:0;
       }
       div.item img{
         width: 100%;
         height: auto;
-		opacity:1;
+	
       }
       .forcenter{
         position: relative;
@@ -63,18 +62,40 @@ WaterFall.prototype = {
 		let items = document.querySelectorAll('.item');
 
 		for (let i = 0; i < items.length; i++) {
+			
 			if (saveColumnHeight.length < itemNum) {
 				saveColumnHeight[i] = items[i].offsetHeight; // 当布局的元素还没占满一行时，继续向数组中添加第一行第i列的高度
 				setDiv(items[i], 200 * i, 0); // 放置div
+				
 			} else { // 当已经占满一行时，就找出每一列的最小高度，然后当前的这个div放在高度最小的那一列
 				let pos = getMinH(saveColumnHeight); //去找高度最小的那一列
 				saveColumnHeight[pos.column] += items[i].offsetHeight;
 				setDiv(items[i], pos.left, pos.top); // 放置div
+				
 			}
+			
+			$(items[i]).addClass(i%2?'slideInRight':'slideInLeft').attr('animationName',i%2?'slideInRight':'slideInLeft');
+
 		}
+		initAnimated();
+		$(window).scroll(function(){
+			initAnimated();
+		})
+		
 		
 	}
 }
+function initAnimated(){
+	const outerHeight = $(window).scrollTop() + window.outerHeight+30;
+	$('.wow').each(function(item){
+		const _self  = $('.wow').eq(item);
+		const top = _self.offset().top;
+		if(!_self.hasClass('animated') && top < outerHeight){
+			_self.css('animationName',_self.attr('animationName')).addClass('animated');
+		}
+	})
+}
+
 
 // 工具性函数，不必放入原型链。
 function getMinH(arr) {
@@ -102,5 +123,7 @@ function getMinH(arr) {
 function setDiv(item, left, top) {
 	item.style.left = left + 'px';
 	item.style.top = top + 'px';
-	item.style.opacity = '.05';
+	item.style.animationName = 'none';
+	
+	item.style.opacity = '1';
 }
